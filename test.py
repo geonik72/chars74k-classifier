@@ -4,7 +4,7 @@ import os
 import random
 import torch
 import torch.nn.functional as F
-from train import transforms
+from torchvision import transforms
 from model import CharacterClassification
 
 #takes an image that is in the same directory as this file and predicts the character in it using the trained model

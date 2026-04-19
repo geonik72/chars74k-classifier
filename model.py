@@ -52,5 +52,3 @@ class CharacterClassification(nn.Module):
         
 
         return x
-        
-model = CharacterClassification()
