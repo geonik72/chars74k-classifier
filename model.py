@@ -33,13 +33,14 @@ class CharacterClassification(nn.Module):
             nn.Conv2d(128, 256, kernel_size=3, stride=1, padding=1),
             nn.BatchNorm2d(256),
             nn.ReLU(inplace=True),
-            nn.MaxPool2d(kernel_size=2, stride=2)
+            nn.MaxPool2d(kernel_size=2, stride=2),
+            nn.AdaptiveAvgPool2d((4, 4)) 
         )
         
         self.classifier = nn.Sequential(
-            # Fully Connected Layers: 256*8*8 -> 512 -> 62
-            nn.Flatten(), # Flattens tensor from (batch_size, 256, 8, 8) to (batch_size, 256*8*8)
-            nn.Linear(256 * (input_height // 16) ** 2, 512),
+            # Fully Connected Layers: 256*4*4 -> 512 -> 62
+            nn.Flatten(), # Flattens tensor from (batch_size, 256, 4, 4) to (batch_size, 256*4*4)
+            nn.Linear(256 * 4 * 4, 512),
             nn.ReLU(inplace=True),
             nn.Dropout(0.5),
             nn.Linear(512, output_size)
