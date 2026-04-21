@@ -30,7 +30,7 @@ if __name__ == '__main__': #necessary for Windows to avoid multiprocessing issue
         transforms.Normalize((0.5,), (0.5,))
     ])
 
-    data_dir = 'data/EnglishFnt/English/Fnt'
+    data_dir = 'data\\English\\Fnt'
 
     
 
@@ -70,7 +70,7 @@ if __name__ == '__main__': #necessary for Windows to avoid multiprocessing issue
         for images, labels in train_loader:
             counter += 1
             if counter % 20 == 0:
-                print(f'Number of batches processed: {counter}')
+                print(f'Number of batches processed: {counter}/{len(train_loader)}')
 
             images, labels = images.to(device), labels.to(device) # Move data to device
             optimizer.zero_grad() # Clear gradients from previous step
